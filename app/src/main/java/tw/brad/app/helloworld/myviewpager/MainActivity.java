@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager pager;
     private ArrayList<View> views;
+    private ViewFlipper flipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,33 @@ public class MainActivity extends AppCompatActivity {
         views.add(view0);
         views.add(view1);views.add(view2);views.add(view3);
         views.add(view4);
+
+        flipper = (ViewFlipper) view2.findViewById(R.id.flipper);
+        View f0 = flipper.getChildAt(0);
+        View f1 = flipper.getChildAt(1);
+        View f2 = flipper.getChildAt(2);
+        f0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flipper.showNext();
+            }
+        });
+        f1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flipper.showNext();
+            }
+        });
+        f2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                flipper.showNext();
+            }
+        });
+
+
+
+
 
         pager.setAdapter(new MyPagerAdapter());
         pager.setOnPageChangeListener(new MyPagerListener());
